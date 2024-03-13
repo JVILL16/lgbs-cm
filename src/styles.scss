@@ -1,1 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/scss/bootstrap";
+@font-face {
+    font-family: Daily Quantem;
+    src: url('assets/Daily-Quantum_PersonalUseOnly.ttf');
+    
+  }
+body{
+    background-size:cover;
+    padding-top:55px;
+    overflow-x: hidden;
+    background-color: #07758B;
+}
+
+.container-sage{
+    width:100%;
+    overflow:hidden;
+}
+
+.container-pt{
+    padding-top:50px;
+}

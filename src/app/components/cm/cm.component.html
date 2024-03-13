@@ -1,0 +1,177 @@
+<div style="margin-bottom: 1000px; text-align: center;" *ngIf="!user_check">
+    <h1>404 Error</h1>
+    <h1>Contract Manager Page Not Found</h1>
+    <h5>Coming soon in the next update</h5>
+    
+</div>
+
+<div class="container-sage" *ngIf="user_check">
+
+
+
+
+
+    <div class="row home_header">
+        <img class="image_set" src="../assets/sp_banner.gif" alt="headline">
+        <div class="card home_info">
+            <h2 class="card-header">Welcome User,</h2>
+            <div class="card-body">
+                <p>This is the contract manager page.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+
+    <div class="row home_sect_top">
+        <div class="col-xl-3">
+            <div class="card ">
+                <div class="iconCard">
+                    
+                </div>
+                <span class="fa-stack fa-2x">
+                    <i class="fa-thin fa-circle fa-stack-2x"></i>
+                    <i class="fa-solid fa-note"></i>
+                </span>
+                <h3 class="card-body">Clutch</h3>
+            </div>
+        </div>
+        <div class="col-xl-3">
+            <div class="card home_sect">
+                <h3 class="card-body">Grocery</h3>
+            </div>
+        </div>
+        <div class="col-xl-3">
+            <div class="card home_sect">
+                <h3 class="card-body">Kickball</h3>
+            </div>
+        </div>
+        <div class="col-xl-3">
+            <div class="card home_sect">
+                <h3 class="card-body">JAM Studios</h3>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="row ">
+        <div class="table-responsive" style="margin:0 auto; max-width:1000px;">
+            <div class="card">
+                <table class="table table-sm table-data table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Verified</th>
+                            <th>Created Date</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let users of usersList;index as i">
+                        <tr>
+                            <td>{{users.first_name}}-{{users.last_name}}</td>
+                            <td>{{users.username}}</td>
+                            <td>{{users.email ? users.email : 'Not Valid Email'}}</td>
+                            <td>{{users.phone}}</td>
+                            <td>{{users.verified ? 'verified' : 'Not verified'}}</td>
+                            <td>{{users.date_created | date:'shortDate'}}</td>
+                            <td>
+                                <i class="fa-solid fa-star-half"></i>
+                                <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#addRoleModal" (click)="addRole(users)">Add Role</button>
+                                <button class="btn btn-sm btn-primary" (click)="authShowRoles(i)">Roles</button>
+                                <button class="btn btn-sm btn-danger" (click)="auth_RemoveUser(users.id)">Remove</button>
+                            </td>
+                        </tr>
+                        <tr *ngIf="(showRole==='showRole'+i) && (displayRoles)">
+                            <td colspan="7">
+                                <div class="table-responsive" style="margin:0 auto; max-width:500px;">
+                                    <table class="table table-sm table-data table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Profile Id</th>
+                                                <th>Profile</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody *ngFor="let roles of users.roles">
+                                            <tr>
+                                                <td>{{roles.profile_id}}</td>
+                                                <td>{{roles.profile}}</td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="removeRole(roles.id)">Remove</button>
+                                                </td>
+                                            </tr>
+                                            
+                                        </tbody>
+                        
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+    
+                </table>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Deleting a Role</h5>
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Are you sure you want to delete this role?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-danger" (click)="auth_RemoveRole(rmv_role_id)">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="addRoleModal" tabindex="-1" role="dialog" aria-labelledby="addRoleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addRoleModalLabel">Select the Following Roles:</h5>
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <h3>Roles</h3>
+            <div class="form-check form-check-inline" *ngFor="let list of profileAddList">
+                <input class="form-check-input me-3" [(ngModel)]="list.checked" type="checkbox" id="{{list.id}}Check">
+                <label class="form-check-label" for="{{list.id}}Check">
+                    {{list.profile}}
+                </label>
+                
+            </div>
+     
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-success" (click)="auth_AddRole()" >Save</button> 
+          <!-- (click)="auth_AddRole(rmv_role_id)" -->
+        </div>
+      </div>
+    </div>
+  </div>

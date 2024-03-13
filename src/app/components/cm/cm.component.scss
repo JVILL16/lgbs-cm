@@ -1,0 +1,46 @@
+
+@import "~font-awesome/scss/font-awesome";
+.image_set{
+    background-size: cover;
+    position: relative;
+    height: 400px; 
+    // width: 100%; 
+    overflow: hidden;
+    opacity: .6;
+}
+.home_info{
+    position: absolute;
+    background-color: #5B5B5B;
+    width: 300px;
+    padding:0;
+    // opacity: .9;
+    bottom: -60px;
+    left: 100px; 
+}
+.home_header{
+    font-family: 'Daily Quantem';
+    color:white;
+    font-size:30px;
+    position: relative;
+    margin-bottom: 300px;
+    
+    
+}
+.home_sect_top{
+    font-family: 'Daily Quantem';
+    //color:white;
+    font-size:30px;
+    margin-left:200px;margin-right:200px;
+    margin-bottom: 300px;
+}
+
+
+.iconCard{
+    position: absolute;
+    width: 100px;
+    height:100px;
+    padding:0;
+    // opacity: .9;
+    top: 100px;
+    left: -80px; 
+}

@@ -1,0 +1,43 @@
+@import "~font-awesome/css/font-awesome";
+
+.body-noBack{
+    background-color: rgb(0,0,0,0.5);
+}
+.disabled
+{
+  pointer-events: none;
+  /* for "disabled" effect */
+  opacity: 0.5;
+  background: #CCC;
+}
+.alert-fixed {
+    position:fixed; 
+    margin-left: 600px;
+    margin-right: 600px; 
+    // text-align: center;
+    z-index:9999; 
+    border-radius:25px
+}
+.otp-field input {
+    height: 45px;
+    width: 42px;
+    border-radius: 6px;
+    outline: none;
+    font-size: 1.125rem;
+    text-align: center;
+    border: 1px solid #ddd;
+  }
+  .otp-field {
+    flex-direction: row;
+    column-gap: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .otp-field input:focus {
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+  }
+  .otp-field input::-webkit-inner-spin-button,
+  .otp-field input::-webkit-outer-spin-button {
+    display: none;
+  }
