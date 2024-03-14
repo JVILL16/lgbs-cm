@@ -28,12 +28,14 @@ export class HomeComponent implements OnInit{
 
   constructor(private ds: DataService){
     console.log(ds.getToken());
-    if(ds.getToken()) this.userLogin = true; else this.userLogin = false;
+    if(ds.getToken()) {
+      this.home_GetUsers();
+      this.userLogin = true; 
+    }else this.userLogin = false;
   };
 
   ngOnInit(): void{
-    this.home_GetUsers();
-
+    
   }
 
   private home_GetUsers() {
