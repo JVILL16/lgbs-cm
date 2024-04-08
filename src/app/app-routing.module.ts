@@ -12,7 +12,7 @@ const routes: Routes = [
     { path: '', component: HomeComponent},
     { path: 'contract_manager', component: CMComponent },
     { path: 'files', component: FilesComponent,canActivate: [AuthguardGuard] },
-    { path: 'client_support', component: CSComponent,canActivate: [AuthguardGuard] },
+    { path: 'client_support', component: CSComponent},
     { path: 'login', component: LoginComponent},
     { path: 'register', component: RegisterComponent },
 //canActivate: [AuthguardGuard]
