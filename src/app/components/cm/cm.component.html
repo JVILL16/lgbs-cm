@@ -84,7 +84,7 @@
                             <td>{{users.verified ? 'verified' : 'Not verified'}}</td>
                             <td>{{users.date_created | date:'shortDate'}}</td>
                             <td>
-                                <i class="fa-solid fa-star-half"></i>
+                                <i class="fa-solid fa-star"></i>
                                 <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#addRoleModal" (click)="addRole(users)">Add Role</button>
                                 <button class="btn btn-sm btn-primary" (click)="authShowRoles(i)">Roles</button>
                                 <button class="btn btn-sm btn-danger" (click)="auth_RemoveUser(users.id)">Remove</button>

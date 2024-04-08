@@ -26,8 +26,8 @@ export class CMComponent implements OnInit{
 
   
   constructor(private dataService : DataService, private loadingScreen: LoadingComponent) {
-    //this.user_check = dataService.isAdmin();
-    this.user_check = true;
+    this.user_check = dataService.isAdmin();
+    //this.user_check = false;
    }
  
   ngOnInit() {
